@@ -5,19 +5,19 @@
     <title>User</title>
 </head>
 <body>
-<div>
-    <h1>User</h1>
-    <table>
+<h1>User</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>LastName</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Password</th>
+        <th>Role</th>
+    </tr>
+    <div th:each="user : ${user}">
         <tr>
-            <th>ID</th>
-            <th>UserName</th>
-            <th>LastName</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Password</th>
-            <th>Role</th>
-        </tr>
-        <tr th:each="user : ${users}">
             <td th:text="${user.getId()}"></td>
             <td th:text="${user.getUsername()}"></td>
             <td th:text="${user.getLastName()}"></td>
@@ -28,7 +28,10 @@
                 <p th:text="*{role.getRole()}"></p>
             </td>
         </tr>
-    </table>
-</div>
+    </div>
+</table>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>
